@@ -3,3 +3,4 @@ Reverse LinkeList Recursively/ iteratively
 mergeTwoSortedArrays iteratively
 Kth Symbol In Grammar
 Rentangle Area
+Merge Intervals // misunderstood problem and had issues with implementation
