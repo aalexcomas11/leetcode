@@ -12,10 +12,12 @@ class ParenthesisPermutation {
     public static void thePerms(int n){
         if(n == 0){
             System.out.println("");
+            System.out.println("-----------------------");
             return;
         }
         if(n == 1){
             System.out.println("()");
+            System.out.println("-----------------------");
             return;
         }
 
