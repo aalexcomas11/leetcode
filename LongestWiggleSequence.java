@@ -1,43 +1,43 @@
+// DP O(n^2) solution, took about an hour. O(n) solution exist with up & down array
+
 import java.util.*;
 
-class LongestWiggleSequence{
-    public static void main(String[] args) {
-
-        int[]  arr = {1,7,4,9};
-
-
-        thePerms(arr);
-
+class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if(nums.length < 2){
+            return nums.length;
+        }
+        
+        int[] vals = new int[nums.length];
+        Arrays.fill(vals,1);
+        boolean[] bools = new boolean[nums.length];
+        int max = 1;
+        
+        for(int j = 1; j < nums.length; j++){
+            for(int i = 0; i < j; i++){
+                
+                if(nums[i] == nums[j]){
+                    continue;
+                }
+                
+                boolean currb = nums[j] >= nums[i];
+                
+                if(i == 0 || currb != bools[i]){
+                    
+                    if(vals[i] + 1 >= vals[j]){
+                        bools[j] = currb;
+                    }
+                    
+                    vals[j] = Math.max(vals[i] + 1, vals[j]);
+                    
+                    if(max < vals[j]){
+                        max = vals[j];
+                    }
+                    
+                }
+            }
+        }
+        
+        return max;
     }
-
-    static public void thePerms(int[] n){
-        if(n.length == 1){
-            System.out.println(1);
-            return;
-        }
-        ArrayList<Integer> n2 = new ArrayList<>();
-
-        for(int num : n){
-            n2.add(num);
-        }
-         thePermsHelper(n2);
-    }
-    static public void thePermsHelper(ArrayList<Integer> n){
-
-        System.out.println(n);
-
-        if(n.size() == 1){
-            return;
-        }
-
-
-        for(int i = 0; i < n.size(); i++){
-            ArrayList<Integer> copy = new ArrayList<>(n);
-            copy.remove(i);
-            thePermsHelper(copy);
-        }
-
-
-    }
-
 }
